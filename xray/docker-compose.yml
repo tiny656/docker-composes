@@ -1,0 +1,36 @@
+version: "3.9"
+services:
+  xray:
+    image: teddysun/xray:latest
+    container_name: xray
+    restart: always
+    ports:
+      - 8188:8188
+      - 8188:8188/udp
+    volumes:
+      - ./config.json:/etc/xray/config.json
+      - ./fullchain.crt:/etc/xray/fullchain.crt
+      - ./private.key:/etc/xray/private.key
+    depends_on:
+      - caddy
+
+  caddy:
+    image: caddy:latest
+    container_name: xray-caddy
+    restart: always
+    volumes:
+      - ./caddy/Caddyfile:/etc/caddy/Caddyfile
+      - ./caddy/index.html:/etc/caddy/wwwroot/index.html
+
+  snell:
+    image: tiny656/snell:latest
+    container_name: snell
+    restart: always
+    ports:
+      - 8189:8189
+      - 8189:8189/udp
+    environment:
+      - PSK=<your PSK>
+      - SERVER_PORT=8189
+      - TZ=Asia/Shanghai
+      - OBFS=tls

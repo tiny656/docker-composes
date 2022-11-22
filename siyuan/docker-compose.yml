@@ -1,0 +1,19 @@
+version: "3.9"
+services:
+  siyuan:
+    image: b3log/siyuan:latest
+    container_name: siyuan
+    restart: always
+    volumes:
+      - ./workspace:/siyuan/workspace
+    command: [--workspace=/siyuan/workspace,--ssl=true,--accessAuthCode=<your accessAuthCode>] # replace with your accessAuthCode
+  nginx:
+    image: nginx:latest
+    container_name: siyuan-nginx
+    restart: always
+    ports:
+      - 443:443
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./fullchain.crt:/etc/nginx/certs/fullchain.crt # replace <fullchain.crt>
+      - ./private.key:/etc/nginx/certs/private.key # replace <private.key>

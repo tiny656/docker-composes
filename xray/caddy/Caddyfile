@@ -1,0 +1,7 @@
+<your domain>:80 {
+    root * /etc/caddy/wwwroot
+    log {
+        output file /etc/caddy/caddy.log
+    }
+    file_server
+}

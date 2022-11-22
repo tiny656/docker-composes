@@ -1,0 +1,18 @@
+version: "3.9"
+services:
+  # https://github.com/alibaba/anyproxy/tree/master/docs-src/cn 
+  # 命令行启动AnyProxy，默认端口号8001
+  # 启动后将终端http代理服务器配置为127.0.0.1:8001即可
+  # 访问http://127.0.0.1:8002 ，web界面上能看到所有的请求信息
+  anyproxy:
+    image: tiny656/anyproxy:latest
+    container_name: anyproxy
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - ./anyproxy:/anyproxy
+    command: anyprox --intercept --ws-intercept --port 8001 --webport 8002
+    ports:
+      - 8001:8001
+      - 8002:8002

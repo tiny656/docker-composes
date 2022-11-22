@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+  memos:
+    image: neosmemo/memos:latest
+    container_name: memos
+    restart: always
+    volumes:
+      - ./memos-data:/var/opt/memos
+  nginx:
+    image: nginx:latest
+    container_name: memos-nginx
+    restart: always
+    depends_on:
+      - memos
+    ports:
+      - 443:443
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./fullchain.crt:/etc/nginx/certs/fullchain.crt # replace <fullchain.crt> 
+      - ./private.key:/etc/nginx/certs/private.key # replace <private.key>
