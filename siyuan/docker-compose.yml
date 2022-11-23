@@ -15,5 +15,5 @@ services:
       - 443:443
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./fullchain.crt:/etc/nginx/certs/fullchain.crt # replace <fullchain.crt>
-      - ./private.key:/etc/nginx/certs/private.key # replace <private.key>
+      - ./<your fullchain.crt>:/etc/nginx/certs/fullchain.crt
+      - ./<your private.key>:/etc/nginx/certs/private.key

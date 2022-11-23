@@ -9,8 +9,8 @@ services:
       - 8188:8188/udp
     volumes:
       - ./config.json:/etc/xray/config.json
-      - ./fullchain.crt:/etc/xray/fullchain.crt
-      - ./private.key:/etc/xray/private.key
+      - ./<your fullchain.crt>:/etc/xray/fullchain.crt
+      - ./<your private.key>:/etc/xray/private.key
     depends_on:
       - caddy
 
