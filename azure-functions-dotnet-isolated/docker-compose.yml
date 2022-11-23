@@ -1,0 +1,26 @@
+version: "3.9"
+services:
+  azfunction:
+    container_name: <your AzFunction.DotNet porject>
+    image: <your AzFunction.DotNet porject>:latest
+    build: .
+    restart: always
+    ports:
+      - 443:443
+    depends_on:
+      - azurite
+    environment:
+      ASPNETCORE_Kestrel__Certificates__Default__Password: "<your cert password>"
+    volumes:
+      # cat certificate.crt ca_bundle.crt > full_chain.crt
+      # openssl pkcs12 -export -out <your cert>.pfx -inkey <your private.key> -in <your full_chain.crt>
+      # password: <your cert password> 
+      - "<your cert.pfx>:/certs/cert.pfx"
+      - "./host_secrets.json:/etc/secrets/host.json"
+      - "./azfunc-logs:/azfunc-logs"
+  azurite:
+    image: mcr.microsoft.com/azure-storage/azurite:latest
+    container_name: azurite
+    restart: always
+    volumes:
+      - "./azurite:/data"
