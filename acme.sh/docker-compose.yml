@@ -1,0 +1,30 @@
+version: "3.9"
+services:
+  # https://github.com/acmesh-official/acme.sh
+  acme.sh:
+    image: neilpang/acme.sh:latest
+    container_name: acme.sh
+    restart: always
+    ports:
+      - 80:80
+    volumes:
+      - ./acme.sh-data:/acme.sh
+      - ./start.sh:/start.sh
+    environment:
+      - MY_EMAIL=<your email>
+      - MY_DOMAIN=<your domain>
+      - AZUREDNS_SUBSCRIPTIONID=<your subscription id>
+      - AZUREDNS_MANAGEDIDENTITY=true
+    command: ["daemon"]
+
+# automatic issue certificate from zerossl by default. 
+# wiki: https://github.com/acmesh-official/acme.sh/wiki/%E8%AF%B4%E6%98%8E
+
+# Instruction
+# 1. Create Azure managed identity
+# 2. Assign Azure managed identity to VMs
+# 3. Assign managde identity with DNS Zone Contributor role to your DNS Zone
+# 4. Start the docker-compose
+# 5. run 
+# `cat start.sh | sudo docker exec -i acme.sh /bin/sh`
+# or `sudo docker exec -i acme.sh /bin/sh /start.sh`
