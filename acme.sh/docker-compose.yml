@@ -5,8 +5,6 @@ services:
     image: neilpang/acme.sh:latest
     container_name: acme.sh
     restart: always
-    ports:
-      - 80:80
     volumes:
       - ./acme.sh-data:/acme.sh
       - ./start.sh:/start.sh
