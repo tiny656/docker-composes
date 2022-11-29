@@ -10,8 +10,6 @@ services:
     restart: always
     environment:
       - TZ=Asia/Shanghai
-    volumes:
-      - ./anyproxy:/anyproxy
     command: anyprox --intercept --ws-intercept --port 8001 --webport 8002
     ports:
       - 8001:8001
