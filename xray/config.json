@@ -1,56 +1,69 @@
 {
-	"logs": {
-	  "loglevel": "warning"
-	},
-	"inbounds": [
-	  {
-		"listen": "0.0.0.0",
-		"port": 8188,
-		"protocol": "vless",
-		"tag": "vless-xlts",
-		"settings": {
-		  "clients": [
-			{
-			  "id": "<your guid>",
-			  "level": 0,
-			  "email": "<your email>",
-			  "flow": "xtls-rprx-direct"
-			}
-		  ],
-		  "decryption": "none",
-		  "fallbacks": [
-			{
-			  "dest": "caddy:80"
-			}
-		  ]
-		},
-		"streamSettings": {
-		  "network": "tcp",
-		  "security": "xtls",
-		  "xtlsSettings": {
-			"rejectUnknownSni": true,
-			"serverName": "<your domain>",
-			"alpn": ["http/1.1", "h2"],
-			"certificates": [
-			  {
-				"certificateFile": "/etc/xray/fullchain.crt",
-				"keyFile": "/etc/xray/private.key"
-			  }
-			],
-			"fingerprint": "firefox"
-		  }
-		},
-		"sniffing": {
-		  "enabled": true,
-		  "destOverride": ["http", "tls", "fakedns"],
-		  "metadataOnly": false
-		}
-	  }
-	],
-	"outbounds": [
-	  {
-		"protocol": "freedom",
-		"tag": "direct"
-	  }
-	]
-  }
+  "logs": {
+    "loglevel": "warning"
+  },
+  "routing": {
+    "domainStrategy": "IPIfNonMatch",
+    "rules": [
+      {
+        "type": "field",
+        "ip": ["geoip:cn"],
+        "outboundTag": "block"
+      }
+    ]
+  },
+  "inbounds": [
+    {
+      "listen": "0.0.0.0",
+      "port": 8188,
+      "protocol": "vless",
+      "tag": "vless-tls",
+      "settings": {
+        "clients": [
+          {
+            "id": "<your id>",
+            "level": 0,
+            "email": "<your email>",
+            "flow": "xtls-rprx-vision"
+          }
+        ],
+        "decryption": "none",
+        "fallbacks": [
+          {
+            "dest": "caddy:80"
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "tls",
+        "tlsSettings": {
+          "rejectUnknownSni": true,
+          "serverName": "<your domain>",
+          "alpn": ["http/1.1", "h2"],
+          "certificates": [
+            {
+              "certificateFile": "/etc/xray/server.crt",
+              "keyFile": "/etc/xray/server.key"
+            }
+          ],
+          "fingerprint": "firefox"
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls", "fakedns"]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "tag": "direct"
+    },
+    {
+      "protocol": "blackhole",
+      "tag": "block"
+    }
+  ]
+}
