@@ -14,6 +14,7 @@ acme.sh --register-account -m tiny656@hotmail.com # <your email>
 acme.sh --issue --dns dns_azure -d $MY_DOMAIN -d *.$MY_DOMAIN
 
 # 6. save cert results into `out` folder
+# those parameters will be recorded automatically, and used by future once certificate got renewed
 acme.sh --install-cert -d $MY_DOMAIN \
 --cert-file      /acme.sh/out/$MY_DOMAIN/$MY_DOMAIN.cer \
 --ca-file        /acme.sh/out/$MY_DOMAIN/ca.cer \
