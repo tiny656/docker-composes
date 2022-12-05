@@ -1,0 +1,15 @@
+// file: /root/.docker/config.json
+// command: sudo docker login -u <your name> <your server>
+// if you mount the config file as described above, 
+// be sure to also prepend the URL for the registry when starting up your watched image (you can omit the https://)
+// like image: docker.io/<your username>/<your image>:<your tag>
+{
+  "auths": {
+    "index.docker.io/v1/": {
+      "auth": "<your auth token>"
+    },
+    "docker.io": {
+      "auth": "<your auth token>"
+    }
+  }
+}
