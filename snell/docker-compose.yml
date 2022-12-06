@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  snell:
+    image: tiny656/snell:latest
+    container_name: snell
+    restart: always
+    ports:
+      - 18081:18080
+      - 18081:18080/udp
+    environment:
+      - PSK=<your PSK>
+      - SERVER_PORT=18080
+      - TZ=Asia/Shanghai
+      - OBFS=tls

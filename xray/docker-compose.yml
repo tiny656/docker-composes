@@ -21,16 +21,3 @@ services:
     volumes:
       - ./caddy/Caddyfile:/etc/caddy/Caddyfile
       - ./caddy/index.html:/etc/caddy/wwwroot/index.html
-
-  snell:
-    image: tiny656/snell:latest
-    container_name: snell
-    restart: always
-    ports:
-      - 8189:8189
-      - 8189:8189/udp
-    environment:
-      - PSK=<your PSK>
-      - SERVER_PORT=8189
-      - TZ=Asia/Shanghai
-      - OBFS=tls
