@@ -5,8 +5,8 @@ services:
     container_name: snell
     restart: always
     ports:
-      - 18081:18080
-      - 18081:18080/udp
+      - 18080:18080
+      - 18080:18080/udp
     environment:
       - PSK=<your PSK>
       - SERVER_PORT=18080
