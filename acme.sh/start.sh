@@ -10,8 +10,10 @@ acme.sh --upgrade --auto-upgrade
 # 4. register account with zerossl
 acme.sh --register-account -m $MY_EMAIL
 
-# 5. issue cert by dns_azure way
+# 5.1 issue cert by dns_azure way
 acme.sh --issue --dns dns_azure -d $MY_DOMAIN -d *.$MY_DOMAIN
+# 5.2 issue cert by standalone way
+# acme.sh --issue -d $MY_DOMAIN --standalone
 
 # 6. save cert results into `out` folder
 # those parameters will be recorded automatically, and used by future once certificate got renewed

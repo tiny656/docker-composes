@@ -5,8 +5,8 @@ services:
     container_name: xray
     restart: always
     ports:
-      - 8188:8188
-      - 8188:8188/udp
+      - 443:443
+      - 443:443/udp
     volumes:
       - ./config.json:/etc/xray/config.json
       - ./<your fullchain.crt>:/etc/xray/fullchain.crt

@@ -1,0 +1,44 @@
+{
+    "run_type": "server",
+    "local_addr": "0.0.0.0",
+    "local_port": 443,
+    "remote_addr": "<your server domain>",
+    "remote_port": 8080,
+    "log_level": 2,
+    "password": [
+        "<your password>"
+    ],
+    "buffer_size": 32,
+    "dns": [],
+    "ssl": {
+        "verify": true,
+        "verify_hostname": true,
+        "cert": "/etc/trojan-go/fullchain.cer",
+        "key": "/etc/trojan-go/private.key",
+        "key_password": "",
+        "cipher": "",
+        "curves": "",
+        "prefer_server_cipher": false,
+        "sni": "<your server domain>",
+        "alpn": [
+            "h2",
+            "http/1.1"
+        ],
+        "session_ticket": true,
+        "reuse_session": true,
+        "plain_http_response": "",
+        "fallback_addr": "<your server domain>",
+        "fallback_port": 8080,
+        "fingerprint": "firefox"
+    },
+    "tcp": {
+        "no_delay": true,
+        "keep_alive": true,
+        "prefer_ipv4": false
+    },
+    "mux": {
+        "enabled": true,
+        "concurrency": 8,
+        "idle_timeout": 60
+    }
+}

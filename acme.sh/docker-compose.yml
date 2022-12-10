@@ -8,13 +8,16 @@ services:
     volumes:
       - ./acme.sh-data:/acme.sh
       - ./start.sh:/start.sh
+    # if you want to use http challenge(--standalone), uncomment the following line
+    # ports:
+    #   - 80:80
     environment:
       - MY_EMAIL=<your email>
       - MY_DOMAIN=<your domain>
       - AZUREDNS_SUBSCRIPTIONID=<your subscription id>
       - AZUREDNS_MANAGEDIDENTITY=true
-      - TELEGRAM_BOT_APITOKEN=<your bot token>
-      - TELEGRAM_BOT_CHATID=<your user chat id>
+      - TELEGRAM_BOT_APITOKEN=<your telegram bot token>
+      - TELEGRAM_BOT_CHATID=<your telegram  chat id>
     command: ["daemon"]
 
 # automatic issue certificate from zerossl by default. 
