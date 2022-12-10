@@ -8,7 +8,7 @@ acme.sh --set-notify --notify-hook telegram --notify-level 2 --notify-mode 1
 acme.sh --upgrade --auto-upgrade
 
 # 4. register account with zerossl
-acme.sh --register-account -m tiny656@hotmail.com # <your email>
+acme.sh --register-account -m $MY_EMAIL
 
 # 5. issue cert by dns_azure way
 acme.sh --issue --dns dns_azure -d $MY_DOMAIN -d *.$MY_DOMAIN
