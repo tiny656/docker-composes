@@ -14,6 +14,7 @@ acme.sh --register-account -m $MY_EMAIL
 acme.sh --issue --dns dns_azure -d $MY_DOMAIN -d *.$MY_DOMAIN
 # 5.2 issue cert by standalone way
 # acme.sh --issue -d $MY_DOMAIN --standalone
+# you can also try with letsencrypt, add `--server letsencrypt` behind
 
 # 6. save cert results into `out` folder
 # those parameters will be recorded automatically, and used by future once certificate got renewed
