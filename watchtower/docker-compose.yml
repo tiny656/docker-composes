@@ -3,6 +3,7 @@ services:
   watchtower:
     image: containrrr/watchtower:latest
     container_name: watchtower
+    restart: always
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       # docker login to store your credentials in $HOME/.docker/config.json and then mount this config file to make it available to the Watchtower container
