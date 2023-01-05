@@ -1,0 +1,36 @@
+version: '3.9'
+services:
+  miniflux:
+    image: miniflux/miniflux:latest
+    container_name: miniflux
+    restart: always
+    ports:
+      - 443:8080
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=postgres://miniflux:<your postgres password>@db/miniflux?sslmode=disable
+      - RUN_MIGRATIONS=1
+      - CREATE_ADMIN=1
+      - ADMIN_USERNAME=<your username>
+      - ADMIN_PASSWORD=<your password>
+      - CERT_FILE=/etc/miniflux/fullchain.crt
+      - KEY_FILE=/etc/miniflux/private.key
+    healthcheck:
+      test: ["CMD", "/usr/bin/miniflux", "-healthcheck", "https://<your miniflux domain>"]
+    volumes:
+      - <your fullchain.crt>:/etc/miniflux/fullchain.crt
+      - <your private.key>:/etc/miniflux/private.key
+  db:
+    image: postgres:15
+    container_name: miniflux-postgres-15
+    restart: always
+    environment:
+      - POSTGRES_USER=miniflux
+      - POSTGRES_PASSWORD=<your postgres password>
+    volumes:
+      - ./miniflux-db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "miniflux"]
+      interval: 10s
+      start_period: 30s
