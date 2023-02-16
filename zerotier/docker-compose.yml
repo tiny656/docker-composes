@@ -1,0 +1,34 @@
+version: "3.9"
+services:
+  zerotier:
+    image: zerotier/zerotier:latest
+    container_name: zerotier
+    restart: always
+    network_mode: host
+    environment:
+      - TZ=Asia/Shanghai
+    command: <your network id>
+    volumes:
+      # sudo docker exec zerotier cat /var/lib/zerotier-one/identity.secret > identity.secret
+      # sudo docker exec zerotier cat /var/lib/zerotier-one/identity.public > identity.public
+      # sudo docker exec zerotier cat /var/lib/zerotier-one/authtoken.secret > authtoken.secret
+      - ./zerotier-data/identity.public:/var/lib/zerotier-one/identity.public
+      - ./zerotier-data/identity.secret:/var/lib/zerotier-one/identity.secret
+      - ./zerotier-data/authtoken.secret:/var/lib/zerotier-one/authtoken.secret
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun
+  dns:
+    image: zerotier/zeronsd:latest
+    container_name: zeronsd
+    restart: always
+    network_mode: host
+    depends_on:
+      - zerotier
+    command: start <your network id> -d home.zt
+    volumes:
+      - ./zerotier-data/authtoken.secret:/var/lib/zerotier-one/authtoken.secret
+    environment:
+      - TZ=Asia/Shanghai
+      - ZEROTIER_CENTRAL_TOKEN=<your zerotier central token>
