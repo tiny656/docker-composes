@@ -26,7 +26,7 @@ This repository contains a collection of Docker Compose files for various servic
 
 • xray: A Docker Compose file for running [xray-core](https://github.com/XTLS/Xray-core), a platform for building proxies to bypass network restrictions.
 
-• zerotier: A Docker Compose file for running [zerotier](https://github.com/zerotier/ZeroTierOne, a smart Ethernet switch for planet Earth. 
+• zerotier: A Docker Compose file for running [zerotier](https://github.com/zerotier/ZeroTierOne), a smart Ethernet switch for planet Earth. 
 
 
 # :rocket: Getting Started 
