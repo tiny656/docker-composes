@@ -24,6 +24,8 @@ This repository contains a collection of Docker Compose files for various servic
 
 • watchtower: A Docker Compose file for running [watchtower](https://github.com/containrrr/watchtower), a process for automating Docker container base image updates.
 
+• xiaogpt: A Docker Compose file for running [xiaogpt](https://github.com/yihong0618/xiaogpt), play ChatGPT with xiaomi AI speaker
+
 • xray: A Docker Compose file for running [xray-core](https://github.com/XTLS/Xray-core), a platform for building proxies to bypass network restrictions.
 
 • zerotier: A Docker Compose file for running [zerotier](https://github.com/zerotier/ZeroTierOne), a smart Ethernet switch for planet Earth. 

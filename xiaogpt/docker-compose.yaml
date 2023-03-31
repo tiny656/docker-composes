@@ -1,0 +1,24 @@
+services:
+  xiaogpt:
+    image: yihong0618/xiaogpt:latest
+    container_name: xiaogpt
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+      - OPENAI_API_KEY=<your openai api key>
+    command:
+      - --api_base=http://nginx/v1
+      - --account=<your xiaomi account>
+      - --password=<your xiaomi password>
+      - --hardware=<your xiaomi sound hardware>
+      - --stream
+      - --use_chatgpt_api
+      # - --mute_xiaoai
+    depends_on:
+      - nginx
+  nginx:
+    image: nginx:latest
+    container_name: openai-proxy-nginx
+    restart: always
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
