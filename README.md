@@ -10,6 +10,8 @@ This repository contains a collection of Docker Compose files for various servic
 
 • azure-functions-dotnet-isolated: A Docker Compose file for running [azure-function-dotnet-isolated](https://azure.microsoft.com/en-us/services/functions/) with .NET Isolated Process.
 
+• azure-openai-proxy: A Docker Compose file for running [azure-openai-proxy](https://github.com/diemus/azure-openai-proxy), a proxy for OpenAI's API.
+
 • memos: A Docker Compose file for running [memos](https://github.com/memosa/memos), a simple memo app built with Vue.js.
 
 • miniflux: A Docker Compose file for running [miniflux](https://miniflux.app/), a minimalist and opinionated feed reader.
