@@ -1,0 +1,24 @@
+services:
+  azure-openai-proxy:
+    image: tiny656/azure-openai-proxy:latest
+    container_name: azure-openai-proxy
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+      - AZURE_OPENAI_PROXY_MODE=azure
+      - AZURE_OPENAI_ENDPOINT=<your azure openai endpoint>
+      - AZURE_OPENAI_APIVERSION=<your azure openai api version, like 2023-03-15-preview>
+      - AZURE_OPENAI_MODEL_MAPPER=<your azure openai model mapper, like gpt-3.5-turbo=gpt-35-turbo-version0301>
+      # - AZURE_OPENAI_TOKEN=<your azure openai token>
+  nginx:
+    image: nginx:latest
+    container_name: azure-openai-proxy-nginx
+    restart: always
+    depends_on:
+      - azure-openai-proxy
+    ports:
+      - 443:443
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./<your fullchain.crt>:/etc/nginx/certs/fullchain.crt
+      - ./<your private.key>:/etc/nginx/certs/private.key
