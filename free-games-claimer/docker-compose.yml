@@ -1,0 +1,19 @@
+services:
+  free-games-claimer:
+    image: ghcr.io/vogler/free-games-claimer
+    container_name: free-games-claimer
+    restart: always
+    environment:
+      - VNC_PASSWORD=<your vnc password>
+      - NOTIFY_TITLE=free-game-claimer
+      - NOTIFY=<your notify tool>
+      - EG_EMAIL=<your epic-game email>
+      - EG_PASSWORD=<your epic-game password>
+    volumes:
+      - ./fgc-data:/fgc/data
+    ports:
+      - 6080:6080
+    command: ["node", "epic-games"]
+
+# crontab
+# 55 19 * * * sudo docker run --rm -p 6080:6080 -v /home/tiny656/free-games-claimer/fgc-data:/fgc/data --pull=always -e VNC_PASSWORD=<your vnc password> -e NOTIFY_TITLE=free-game-claimer -e NOTIFY=<your notify tool> -e EG_EMAIL=<your epic-game email> -e EG_PASSWORD=<your epic-game password> ghcr.io/vogler/free-games-claimer:latest node epic-games

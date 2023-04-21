@@ -1,0 +1,12 @@
+services:
+  chatgpt-next-web:
+    image: yidadaa/chatgpt-next-web:latest
+    container_name: chatgpt-next-web
+    restart: always
+    ports:
+      - 3000:3000
+    environment:
+      - BASE_URL=<your openai api server>
+      - PROTOCOL=https
+      - CODE=<access code>
+      - OPENAI_API_KEY=<your openai api key>
