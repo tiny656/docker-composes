@@ -1,4 +1,3 @@
-version: "3.9"
 services:
   # https://github.com/acmesh-official/acme.sh
   acme.sh:

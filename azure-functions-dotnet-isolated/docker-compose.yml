@@ -1,4 +1,3 @@
-version: "3.9"
 services:
   azfunction:
     container_name: <your AzFunction.DotNet porject>

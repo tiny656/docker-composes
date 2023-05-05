@@ -1,4 +1,3 @@
-version: "3.9"
 services:
   xray:
     image: p4gefau1t/trojan-go:latest

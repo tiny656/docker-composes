@@ -1,4 +1,3 @@
-version: "3.9"
 services:
   # https://github.com/alibaba/anyproxy/tree/master/docs-src/cn 
   # 命令行启动AnyProxy，默认端口号8001

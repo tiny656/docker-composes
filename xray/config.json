@@ -7,7 +7,7 @@
     "rules": [
       {
         "type": "field",
-        "ip": ["geoip:cn"],
+        "ip": ["geoip:cn", "geoip:private"],
         "outboundTag": "block"
       }
     ]
@@ -15,39 +15,34 @@
   "inbounds": [
     {
       "listen": "0.0.0.0",
-      "port": 8188,
+      "port": 443,
       "protocol": "vless",
-      "tag": "vless-tls",
+      "tag": "vless-reality-tcp",
       "settings": {
         "clients": [
           {
-            "id": "<your id>",
+            "id": "<your id>", // 必填，执行 ./xray uuid 生成，或 1-30 字节的字符串
             "level": 0,
             "email": "<your email>",
             "flow": "xtls-rprx-vision"
           }
         ],
-        "decryption": "none",
-        "fallbacks": [
-          {
-            "dest": "caddy:80"
-          }
-        ]
+        "decryption": "none"
       },
       "streamSettings": {
         "network": "tcp",
-        "security": "tls",
-        "tlsSettings": {
-          "rejectUnknownSni": true,
-          "serverName": "<your domain>",
-          "alpn": ["http/1.1", "h2"],
-          "certificates": [
-            {
-              "certificateFile": "/etc/xray/server.crt",
-              "keyFile": "/etc/xray/server.key"
-            }
-          ],
-          "fingerprint": "firefox"
+        "security": "reality",
+        "realitySettings": {
+          "show": false, // 选填，若为 true，输出调试信息
+          "dest": "www.amazon.com:443", // 必填，格式同 VLESS fallbacks 的 dest
+          "xver": 0,
+          "serverNames": ["amazon.com", "www.amazon.com"], // 必填，客户端可用的 serverName 列表，暂不支持 * 通配符
+          "privateKey": "<your private key>", // 必填，执行 ./xray x25519 生成
+          "publicKey": "<your public key>",
+          "maxTimeDiff": 70000,
+          "shortIds": [ // 必填，客户端可用的 shortId 列表，可用于区分不同的客户端
+            "" // 若有此项，客户端 shortId 可为空
+          ] 
         }
       },
       "sniffing": {
