@@ -22,7 +22,13 @@ services:
 
     volumes:
       - ./data:/data
+      - <your fullchain cer>:/data/custom_ssl/npm-2/fullchain.pem
+      - <your private key>:/data/custom_ssl/npm-2/privkey.pem
       - ./letsencrypt:/etc/letsencrypt
+    healthcheck:
+      test: ["CMD", "/bin/check-health"]
+      interval: 10s
+      timeout: 3s
 networks:
   default:
     external:
