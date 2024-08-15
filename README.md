@@ -1,52 +1,57 @@
-# :whale: tiny656 Docker Compose Collection 
- 
-This repository contains a collection of Docker Compose files for various services that can be used for development or production environments. The goal of this project is to provide easy-to-use Docker Compose files that allow developers to quickly spin up and test different services without the need for complex configuration. 
+# Docker-Compose Collection
 
-# :file_folder: Included Docker Compose  
+This repository contains a collection of Docker-Compose configurations for various applications and services. Each directory contains the necessary files to deploy and manage the respective application using Docker-Compose.
 
-• acme.sh: A Docker Compose file for running [acme.sh](https://github.com/acmesh-official/acme.sh), a free, open-source, and cross-platform ACME client.
+## Directory Structure
 
-• anyproxy: A Docker Compose file for running [anyproxy](https://github.com/alibaba/anyproxy), a fully configurable proxy in NodeJS.
+- **acme.sh**: Docker-Compose setup for [acme.sh](https://github.com/acmesh-official/acme.sh), a shell script for managing Let's Encrypt certificates.
+- **anyproxy**: Docker-Compose configuration for [AnyProxy](https://github.com/alibaba/anyproxy), a proxy server for capturing and modifying HTTP/HTTPS requests.
+- **azure-functions-dotnet-isolated**: Docker-Compose setup for Azure Functions with .NET isolated worker.
+- **azure-openai-proxy**: Docker-Compose configuration for an Azure OpenAI proxy server.
+- **chatgpt-next-web**: Docker-Compose setup for a ChatGPT web interface.
+- **free-games-claimer**: Docker-Compose configuration for a service that automatically claims free games.
+- **memos**: Docker-Compose setup for [Memos](https://github.com/justmemos/memos), a self-hosted note-taking application.
+- **miniflux**: Docker-Compose configuration for [Miniflux](https://miniflux.app/), a minimalist and opinionated feed reader.
+- **nginx-proxy-manager**: Docker-Compose setup for [Nginx Proxy Manager](https://nginxproxymanager.com/), a simple and powerful reverse proxy.
+- **siyuan**: Docker-Compose configuration for [SiYuan](https://github.com/siyuan-note/siyuan), a local-first personal knowledge management system.
+- **snell**: Docker-Compose setup for [Snell](https://github.com/surge-networks/snell), a proxy server.
+- **stirling-pdf**: Docker-Compose configuration for [Stirling PDF](https://stirlingpdf.com/), an open-source PDF toolkit.
+- **trojan-go**: Docker-Compose setup for [Trojan-Go](https://github.com/p4gefau1t/trojan-go), an unidentifiable mechanism that helps you bypass GFW.
+- **vaultwarden**: Docker-Compose configuration for [Vaultwarden](https://github.com/dani-garcia/vaultwarden), an unofficial Bitwarden server implementation.
+- **wanderer**: Docker-Compose setup for [Wanderer](https://github.com/Flomp/wanderer), a self-hosted trail database. Save your adventures.
+- **watchtower**: Docker-Compose configuration for [Watchtower](https://containrrr.dev/watchtower/), a process for automating Docker container base image updates.
+- **xiaogpt**: Docker-Compose setup for [XiaoGPT](https://github.com/yihong0618/xiaogpt), play ChatGPT and other LLM with Xiaomi AI Speaker.
+- **xray**: Docker-Compose configuration for [Xray](https://github.com/XTLS/Xray-core), a platform for building proxies to bypass network restrictions.
+- **zerotier**: Docker-Compose setup for [ZeroTier](https://www.zerotier.com/), a smart Ethernet switch for planet Earth.
 
-• azure-functions-dotnet-isolated: A Docker Compose file for running [azure-function-dotnet-isolated](https://azure.microsoft.com/en-us/services/functions/) with .NET Isolated Process.
+## Usage
 
-• azure-openai-proxy: A Docker Compose file for running [azure-openai-proxy](https://github.com/diemus/azure-openai-proxy), a proxy for OpenAI's API.
+To use any of the Docker-Compose configurations, navigate to the respective directory and follow the instructions provided in the `README.md` file within that directory. Typically, the steps involve:
 
-• memos: A Docker Compose file for running [memos](https://github.com/memosa/memos), a simple memo app built with Vue.js.
+1. Cloning the repository:
+   ```bash
+   git clone https://github.com/yourusername/docker-composes.git
+   cd docker-composes
+   ```
 
-• miniflux: A Docker Compose file for running [miniflux](https://miniflux.app/), a minimalist and opinionated feed reader.
+2. Navigating to the desired directory:
+   ```bash
+   cd <directory-name>
+   ```
 
-• siyuan: A Docker Compose file for running [siyuan](https://github.com/siyuan-note/siyuan), a local-first personal knowledge management system.
+3. Running Docker-Compose:
+   ```bash
+   docker-compose up -d
+   ```
 
-• snell: A Docker Compose file for running [snell](https://github.com/surge-networks/snell), a fast and secure proxy frontend.
+## Contributing
 
-• trojan-go: A Docker Compose file for running [trojan-go](https://github.com/p4gefau1t/trojan-go), an unidentifiable mechanism that helps you bypass GFW.
+Contributions are welcome! Please submit a pull request or open an issue to discuss any changes or additions.
 
-• vaultwarden: A Docker Compose file for running [vaultwarden](https://github.com/dani-garcia/vaultwarden), a lightweight, open-source password manager.
+## License
 
-• watchtower: A Docker Compose file for running [watchtower](https://github.com/containrrr/watchtower), a process for automating Docker container base image updates.
+This repository is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
-• xiaogpt: A Docker Compose file for running [xiaogpt](https://github.com/yihong0618/xiaogpt), play ChatGPT with xiaomi AI speaker
+---
 
-• xray: A Docker Compose file for running [xray-core](https://github.com/XTLS/Xray-core), a platform for building proxies to bypass network restrictions.
-
-• zerotier: A Docker Compose file for running [zerotier](https://github.com/zerotier/ZeroTierOne), a smart Ethernet switch for planet Earth. 
-
-
-# :rocket: Getting Started 
- 
-To use these Docker Compose files, simply clone this repository and navigate to the directory of the compose file you want to use. Then, run the following command: 
-
-```bash
-This will start the container(s) in the background. 
-
-docker-compose up -d  
-
-To stop the container(s), run the following command:
-
-docker-compose stop
-``` 
-
-# :handshake: Contributing&nbsp;  
-
-Contributions are welcome! If you have a Docker Compose file that you would like to add to this collection, please submit a pull request.
+This repository aims to provide a comprehensive collection of Docker-Compose configurations to streamline the deployment and management of various applications and services. Feel free to explore and use the configurations as needed.
