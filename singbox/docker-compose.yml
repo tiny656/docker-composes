@@ -1,0 +1,13 @@
+services:
+  sing-box:
+    image: ghcr.io/sagernet/sing-box
+    container_name: sing-box
+    restart: always
+    ports:
+      - 8298:8298
+      - 8298:8298/udp
+    volumes:
+      - ./config:/etc/sing-box/
+      - <your fullchain.crt>:/etc/sing-box/server.crt
+      - <your private key>:/etc/sing-box/server.key
+    command: -D /var/lib/sing-box -C /etc/sing-box/ run

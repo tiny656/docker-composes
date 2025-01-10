@@ -1,0 +1,29 @@
+services:
+  syncthing:
+    image: syncthing/syncthing:latest
+    container_name: syncthing
+    hostname: syncthing
+    network_mode: host
+    restart: always
+    environment:
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - <your OneDrive directory path>:/OneDrive
+    # ports:
+    #   - 8384:8384 # Web UI
+    #   - 22000:22000/tcp # TCP file transfers
+    #   - 22000:22000/udp # QUIC file transfers
+    #   - 21027:21027/udp # Receive local discovery broadcasts
+  syncthing-relay-server:
+    image: syncthing/relaysrv:latest
+    container_name: syncthing-relay-server
+    restart: always
+    command: -debug -pools="" -listen=":22067"
+    environment:
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - ./strelaysrv:/var/strelaysrv
+    ports:
+      - 22067:22067

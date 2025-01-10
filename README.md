@@ -13,9 +13,12 @@ This repository contains a collection of Docker-Compose configurations for vario
 - **memos**: Docker-Compose setup for [Memos](https://github.com/justmemos/memos), a self-hosted note-taking application.
 - **miniflux**: Docker-Compose configuration for [Miniflux](https://miniflux.app/), a minimalist and opinionated feed reader.
 - **nginx-proxy-manager**: Docker-Compose setup for [Nginx Proxy Manager](https://nginxproxymanager.com/), a simple and powerful reverse proxy.
+- **qiandao**: Docker-Compose configuration for [Qiandao](https://github.com/qd-today/qd), an open-source sign-in system.
 - **siyuan**: Docker-Compose configuration for [SiYuan](https://github.com/siyuan-note/siyuan), a local-first personal knowledge management system.
+- **singbox**: Docker-Compose configuration for [sing-box](https://github.com/SagerNet/sing-box), a universal proxy platform supporting multiple protocols.
 - **snell**: Docker-Compose setup for [Snell](https://github.com/surge-networks/snell), a proxy server.
 - **stirling-pdf**: Docker-Compose configuration for [Stirling PDF](https://stirlingpdf.com/), an open-source PDF toolkit.
+- **syncthing**: Docker-Compose configuration for [Syncthing](https://github.com/syncthing/syncthing), a continuous file synchronization program.
 - **trojan-go**: Docker-Compose setup for [Trojan-Go](https://github.com/p4gefau1t/trojan-go), an unidentifiable mechanism that helps you bypass GFW.
 - **vaultwarden**: Docker-Compose configuration for [Vaultwarden](https://github.com/dani-garcia/vaultwarden), an unofficial Bitwarden server implementation.
 - **wanderer**: Docker-Compose setup for [Wanderer](https://github.com/Flomp/wanderer), a self-hosted trail database. Save your adventures.
