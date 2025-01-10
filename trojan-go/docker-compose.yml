@@ -23,3 +23,5 @@ services:
     volumes:
       - ./caddy/Caddyfile:/etc/caddy/Caddyfile
       - ./caddy/index.html:/etc/caddy/wwwroot/index.html
+      - <your fullchain.crt>:/etc/ssl/fullchain.cer
+      - <your private.key>:/etc/ssl/private.key
