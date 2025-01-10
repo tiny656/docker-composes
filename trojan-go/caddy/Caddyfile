@@ -3,5 +3,6 @@
     log {
         output file /etc/caddy/caddy.log
     }
+    tls /etc/ssl/server.crt /etc/ssl/server.key
     file_server
 }
