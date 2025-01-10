@@ -1,5 +1,5 @@
 services:
-  xray:
+  trojan-go:
     image: p4gefau1t/trojan-go:latest
     container_name: trojan-go
     restart: unless-stopped
@@ -14,7 +14,7 @@ services:
     depends_on:
       - caddy
 
-  caddy:
+  trojan-go-caddy:
     image: caddy:latest
     container_name: trojan-go-caddy
     restart: unless-stopped
