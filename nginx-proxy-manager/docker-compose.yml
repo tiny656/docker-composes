@@ -1,4 +1,28 @@
 services:
+
+  goaccess-web:
+    image: nginx:latest
+    container_name: goaccess-web
+    volumes:
+      - ./goaccess-web/nginx.conf:/etc/nginx/nginx.conf
+      - ./goaccess-data:/usr/share/nginx/html
+    depends_on:
+      - goaccess
+
+  goaccess:
+    image: allinurl/goaccess:latest
+    container_name: goaccess
+    restart: always
+    environment:
+      - TZ=Asia/Singapore
+    volumes:
+      - ./data/logs:/opt/logs:ro # mount log folder
+      - ./goaccess-data:/report
+      - ./start-goaccess.sh:/start-goaccess.sh:ro
+      - <your fullchain cer>:/certs/fullchain.pem
+      - <your private key>:/certs/privkey.pem
+    entrypoint: ["/bin/sh", "/start-goaccess.sh"]
+
   nginx-proxy-manager:
     image: jc21/nginx-proxy-manager:latest
     container_name: nginx-proxy-manager
