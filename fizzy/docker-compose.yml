@@ -1,0 +1,34 @@
+services:
+  smtp-to-telegram:
+    image: tiny656/smtp-to-telegram:latest
+    build: ./smtp-to-telegram
+    container_name: smtp-to-telegram
+    restart: unless-stopped
+    environment:
+      - SMTP_PORT=2525
+      - SMTP_USERNAME=user
+      - SMTP_PASSWORD=pass
+      - TELEGRAM_BOT_TOKEN=<YOUR_TELEGRAM_BOT_TOKEN>
+      - TELEGRAM_CHAT_ID=<YOUR_TELEGRAM_CHAT_ID>
+
+  fizzy:
+    image: ghcr.io/basecamp/fizzy:main
+    container_name: fizzy
+    restart: unless-stopped
+    # ports:
+      # - "80:80"
+      # - "443:443"
+    environment:
+      - SECRET_KEY_BASE=<YOUR_SECRET_KEY_BASE>
+      - TLS_DOMAIN=<YOUR_DOMAIN>
+      - MAILER_FROM_ADDRESS=fizzy@smtp-to-telegram
+      - SMTP_ADDRESS=smtp-to-telegram
+      - SMTP_PORT=2525
+      - SMTP_USERNAME=user
+      - SMTP_PASSWORD=pass
+      - VAPID_PRIVATE_KEY=<YOUR_VAPID_PRIVATE_KEY>
+      - VAPID_PUBLIC_KEY=<YOUR_VAPID_PUBLIC_KEY>
+    volumes:
+      - ./storage:/rails/storage
+    depends_on:
+      - smtp-to-telegram
