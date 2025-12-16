@@ -1,51 +1,131 @@
-# Docker-Compose Collection
+# Docker Compose Collection
 
-This repository contains a collection of Docker-Compose configurations for various applications and services. Each directory contains the necessary files to deploy and manage the respective application using Docker-Compose.
+> A curated collection of Docker Compose configurations for self-hosted applications and services.
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
+## Quick Start
+
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/docker-composes.git
+cd docker-composes
+
+# Navigate to the desired service
+cd <service-name>
+
+# Start the service
+docker-compose up -d
+```
+
+## Services
+
+### Security & Certificates
+
+| Service | Description |
+|---------|-------------|
+| [acme.sh](acme.sh/) | Automated Let's Encrypt certificate management using [acme.sh](https://github.com/acmesh-official/acme.sh) |
+
+### Network & Proxy
+
+| Service | Description |
+|---------|-------------|
+| [anyproxy](anyproxy/) | HTTP/HTTPS proxy server for capturing and modifying requests ([AnyProxy](https://github.com/alibaba/anyproxy)) |
+| [nginx-proxy-manager](nginx-proxy-manager/) | Web-based reverse proxy management ([NPM](https://nginxproxymanager.com/)) |
+| [singbox](singbox/) | Universal proxy platform with multi-protocol support ([sing-box](https://github.com/SagerNet/sing-box)) |
+| [snell](snell/) | Lightweight encrypted proxy server ([Snell](https://github.com/surge-networks/snell)) |
+| [trojan-go](trojan-go/) | Unidentifiable proxy mechanism ([Trojan-Go](https://github.com/p4gefau1t/trojan-go)) |
+| [xray](xray/) | Proxy platform for bypassing network restrictions ([Xray-core](https://github.com/XTLS/Xray-core)) |
+| [zerotier](zerotier/) | Software-defined networking ([ZeroTier](https://www.zerotier.com/)) |
+
+### AI & LLM
+
+| Service | Description |
+|---------|-------------|
+| [azure-openai-proxy](azure-openai-proxy/) | Proxy server for Azure OpenAI API |
+| [chatgpt-next-web](chatgp-next-web/) | ChatGPT web interface |
+| [xiaogpt](xiaogpt/) | ChatGPT integration for Xiaomi AI Speaker ([XiaoGPT](https://github.com/yihong0618/xiaogpt)) |
+
+### Cloud & Serverless
+
+| Service | Description |
+|---------|-------------|
+| [azure-functions-dotnet-isolated](azure-functions-dotnet-isolated/) | Azure Functions with .NET isolated worker |
+
+### Productivity & Notes
+
+| Service | Description |
+|---------|-------------|
+| [memos](memos/) | Self-hosted note-taking application ([Memos](https://github.com/usememos/memos)) |
+| [siyuan](siyuan/) | Local-first personal knowledge management ([SiYuan](https://github.com/siyuan-note/siyuan)) |
+
+### RSS & Content
+
+| Service | Description |
+|---------|-------------|
+| [miniflux](miniflux/) | Minimalist feed reader ([Miniflux](https://miniflux.app/)) |
+
+### File & Sync
+
+| Service | Description |
+|---------|-------------|
+| [syncthing](syncthing/) | Continuous file synchronization ([Syncthing](https://syncthing.net/)) |
+
+### Documents & Tools
+
+| Service | Description |
+|---------|-------------|
+| [stirling-pdf](stirling-pdf/) | Self-hosted PDF toolkit ([Stirling PDF](https://stirlingpdf.com/)) |
+
+### Automation & Utilities
+
+| Service | Description |
+|---------|-------------|
+| [free-games-claimer](free-games-claimer/) | Automatically claim free games from various platforms |
+| [qiandao](qiandao/) | Open-source sign-in system ([Qiandao](https://github.com/qd-today/qd)) |
+| [watchtower](watchtower/) | Automated Docker container updates ([Watchtower](https://containrrr.dev/watchtower/)) |
+| [fizzy](fizzy/) | Web application service |
+
+### Security & Password Management
+
+| Service | Description |
+|---------|-------------|
+| [vaultwarden](vaultwarden/) | Unofficial Bitwarden server implementation ([Vaultwarden](https://github.com/dani-garcia/vaultwarden)) |
+
+### Lifestyle
+
+| Service | Description |
+|---------|-------------|
+| [wanderer](wanderer/) | Self-hosted trail database for adventures ([Wanderer](https://github.com/Flomp/wanderer)) |
 
 ## Directory Structure
 
-- **acme.sh**: Docker-Compose setup for [acme.sh](https://github.com/acmesh-official/acme.sh), a shell script for managing Let's Encrypt certificates.
-- **anyproxy**: Docker-Compose configuration for [AnyProxy](https://github.com/alibaba/anyproxy), a proxy server for capturing and modifying HTTP/HTTPS requests.
-- **azure-functions-dotnet-isolated**: Docker-Compose setup for Azure Functions with .NET isolated worker.
-- **azure-openai-proxy**: Docker-Compose configuration for an Azure OpenAI proxy server.
-- **chatgpt-next-web**: Docker-Compose setup for a ChatGPT web interface.
-- **free-games-claimer**: Docker-Compose configuration for a service that automatically claims free games.
-- **memos**: Docker-Compose setup for [Memos](https://github.com/justmemos/memos), a self-hosted note-taking application.
-- **miniflux**: Docker-Compose configuration for [Miniflux](https://miniflux.app/), a minimalist and opinionated feed reader.
-- **nginx-proxy-manager**: Docker-Compose setup for [Nginx Proxy Manager](https://nginxproxymanager.com/), a simple and powerful reverse proxy.
-- **qiandao**: Docker-Compose configuration for [Qiandao](https://github.com/qd-today/qd), an open-source sign-in system.
-- **siyuan**: Docker-Compose configuration for [SiYuan](https://github.com/siyuan-note/siyuan), a local-first personal knowledge management system.
-- **singbox**: Docker-Compose configuration for [sing-box](https://github.com/SagerNet/sing-box), a universal proxy platform supporting multiple protocols.
-- **snell**: Docker-Compose setup for [Snell](https://github.com/surge-networks/snell), a proxy server.
-- **stirling-pdf**: Docker-Compose configuration for [Stirling PDF](https://stirlingpdf.com/), an open-source PDF toolkit.
-- **syncthing**: Docker-Compose configuration for [Syncthing](https://github.com/syncthing/syncthing), a continuous file synchronization program.
-- **trojan-go**: Docker-Compose setup for [Trojan-Go](https://github.com/p4gefau1t/trojan-go), an unidentifiable mechanism that helps you bypass GFW.
-- **vaultwarden**: Docker-Compose configuration for [Vaultwarden](https://github.com/dani-garcia/vaultwarden), an unofficial Bitwarden server implementation.
-- **wanderer**: Docker-Compose setup for [Wanderer](https://github.com/Flomp/wanderer), a self-hosted trail database. Save your adventures.
-- **watchtower**: Docker-Compose configuration for [Watchtower](https://containrrr.dev/watchtower/), a process for automating Docker container base image updates.
-- **xiaogpt**: Docker-Compose setup for [XiaoGPT](https://github.com/yihong0618/xiaogpt), play ChatGPT and other LLM with Xiaomi AI Speaker.
-- **xray**: Docker-Compose configuration for [Xray](https://github.com/XTLS/Xray-core), a platform for building proxies to bypass network restrictions.
-- **zerotier**: Docker-Compose setup for [ZeroTier](https://www.zerotier.com/), a smart Ethernet switch for planet Earth.
-
-## Usage
-
-To use any of the Docker-Compose configurations, navigate to the respective directory and follow the instructions provided in the `README.md` file within that directory. Typically, the steps involve:
-
-1. Cloning the repository:
-   ```bash
-   git clone https://github.com/yourusername/docker-composes.git
-   cd docker-composes
-   ```
-
-2. Navigating to the desired directory:
-   ```bash
-   cd <directory-name>
-   ```
-
-3. Running Docker-Compose:
-   ```bash
-   docker-compose up -d
-   ```
+```
+docker-composes/
+├── acme.sh/
+├── anyproxy/
+├── azure-functions-dotnet-isolated/
+├── azure-openai-proxy/
+├── chatgp-next-web/
+├── fizzy/
+├── free-games-claimer/
+├── memos/
+├── miniflux/
+├── nginx-proxy-manager/
+├── qiandao/
+├── singbox/
+├── siyuan/
+├── snell/
+├── stirling-pdf/
+├── syncthing/
+├── trojan-go/
+├── vaultwarden/
+├── wanderer/
+├── watchtower/
+├── xiaogpt/
+├── xray/
+└── zerotier/
+```
 
 ## Contributing
 
@@ -53,8 +133,4 @@ Contributions are welcome! Please submit a pull request or open an issue to disc
 
 ## License
 
-This repository is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
-
----
-
-This repository aims to provide a comprehensive collection of Docker-Compose configurations to streamline the deployment and management of various applications and services. Feel free to explore and use the configurations as needed.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
