@@ -1,0 +1,7 @@
+# Generate password hash: docker run amir20/dozzle generate admin --password <your-password>
+# Or use: echo -n '<your-password>' | shasum -a 256
+users:
+  admin:
+    name: "admin"
+    password: "<your-password-hash>"
+    email: admin@example.com
