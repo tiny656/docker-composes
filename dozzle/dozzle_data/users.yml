@@ -5,3 +5,4 @@ users:
     name: "admin"
     password: "<your-password-hash>"
     email: admin@example.com
+    roles: all
